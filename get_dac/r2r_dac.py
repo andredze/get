@@ -2,10 +2,10 @@ import RPi.GPIO as GEGE
 
 def safe_num(num):
     if num < 0:
-        return 255
+        return 0
     
     elif num > 255:
-        return 0
+        return 255
 
     return num
 
@@ -36,7 +36,7 @@ class R2R_DAC:
             print(f"Напряжение выходит за динамический диапозон ЦАП \
                   (0.00 - {self.dynamic_range:.2f} В)")
             print("Устанавливаем 0.0 В")
-            number = 0
+            return
         else:
             number = int(voltage / self.dynamic_range * 255)
         
