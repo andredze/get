@@ -4,8 +4,8 @@ import time as timelib
 
 
 amplitude = 3.2
-signal_frequency = 10
-sampling_frequency = 1000
+signal_frequency = 1
+sampling_frequency = 10000
 
 
 if __name__ == "__main__":
@@ -15,6 +15,8 @@ if __name__ == "__main__":
         while True:
             try:
                 curr_ampl = sg.get_sin_wave_amplitude(signal_frequency, timelib.monotonic())
+                # print(curr_ampl)
+                # print(curr_ampl*amplitude)
                 dac.set_voltage(curr_ampl * amplitude)
                 sg.wait_for_sampling_period(sampling_frequency)
                 
