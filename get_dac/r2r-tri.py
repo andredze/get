@@ -14,7 +14,7 @@ if __name__ == "__main__":
             
         while True:
             try:
-                curr_ampl = sg.get_sin_wave_amplitude(signal_frequency, timelib.monotonic())
+                curr_ampl = sg.get_triangle_amplitude(signal_frequency, timelib.monotonic())
                 # print(curr_ampl)
                 # print(curr_ampl*amplitude)
                 dac.set_voltage(curr_ampl * amplitude)
