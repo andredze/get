@@ -7,7 +7,7 @@ GEGE.setup(leds, GEGE.OUT)
 
 GEGE.output(leds, 0)
 
-dynamic_range = 3.3
+dynamic_range = 3.15
 
 def voltage_to_number(voltage):
     if not (0.0 <= voltage <= dynamic_range):

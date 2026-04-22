@@ -5,7 +5,7 @@ import time as timelib
 
 amplitude = 1.2
 signal_frequency = 3
-sampling_frequency = 3000
+sampling_frequency = 5000
 
 
 if __name__ == "__main__":
