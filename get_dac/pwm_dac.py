@@ -26,7 +26,7 @@ class PWM_DAC:
             print(f"Напряжение выходит за динамический диапозон ЦАП \
                   (0.00 - {self.dynamic_range:.2f} В)")
             print("Устанавливаем 0.0 В")
-            duty = 0
+            return
             
         else:
             duty = int(voltage / self.dynamic_range * 100)
