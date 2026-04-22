@@ -1,3 +1,4 @@
+import time
 import smbus
 
 class MCP4725:
@@ -23,6 +24,7 @@ class MCP4725:
         first_byte  = self.wm | self.pds | number >> 8
         second_byte = number & 0xFF
 
+        # time.sleep(0.1)
         self.bus.write_byte_data(0x61, first_byte, second_byte)
 
         if self.verbose:
@@ -43,7 +45,7 @@ class MCP4725:
 
 if __name__ == "__main__":
     try:
-        dac = MCP4725(5.0)
+        dac = MCP4725(4.2)
 
         while True:
             try:
