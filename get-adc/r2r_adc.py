@@ -54,7 +54,7 @@ class R2R_ADC:
 
 if __name__ == "__main__":
     
-    adc = R2R_ADC(3.3)
+    adc = R2R_ADC(3.296)
     
     try:    
         while True:
