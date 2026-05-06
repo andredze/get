@@ -45,11 +45,34 @@ class R2R_ADC:
 
         return levels - 1 
         
-
     def get_sc_voltage(self):
         number  = self.sequential_counting_adc()
         voltage = number / 256 * self.dynamic_range
         return voltage
+
+    def successive_approximation_adc(self):
+        n_bits       = 7
+        digital_code = 0
+
+        for i in range(n_bits, -1, -1):
+            digital_code |= (1 << i)
+
+            self.number_to_dac(digital_code)
+
+            comp = GEGE.input(self.comp_gpio)
+
+            if comp == 1:
+                # DAC >= current
+                digital_code &= ~(1 << i)
+
+            time.sleep(self.compare_time)
+
+        return digital_code
+
+    def get_sar_voltage(self):
+        number  = self.successive_approximation_adc()
+        voltage = number / 256 * self.dynamic_range
+        return voltage 
 
 
 if __name__ == "__main__":
@@ -58,7 +81,7 @@ if __name__ == "__main__":
     
     try:    
         while True:
-            curr_voltage = adc.get_sc_voltage()
+            curr_voltage = adc.get_sar_voltage()
             
             print(f"Current voltage: {curr_voltage}")
 
